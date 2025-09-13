@@ -1,0 +1,32 @@
+[
+  {
+    "type": "material",
+    "title": "Physics Notes - Chapter 1",
+    "description": "Comprehensive notes on kinematics. (PDF)"
+  },
+  {
+    "type": "material",
+    "title": "Chemistry Formulas Sheet",
+    "description": "All important formulas for organic chemistry. (PDF)"
+  },
+  {
+    "type": "video",
+    "title": "Calculus in 20 Minutes",
+    "description": "A quick video tutorial on the basics of calculus."
+  },
+  {
+    "type": "video",
+    "title": "History of Modern India",
+    "description": "Lecture series on post-independence events."
+  },
+  {
+    "type": "test",
+    "title": "Mock JEE Practice Test 1",
+    "description": "Full-length practice test with 50 questions."
+  },
+  {
+    "type": "test",
+    "title": "Biology Quick Quiz",
+    "description": "A 10-question quiz on cell structures."
+  }
+]

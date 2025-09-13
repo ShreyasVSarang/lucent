@@ -1,0 +1,54 @@
+name: lucent
+description: "A career guidance application to provide clarity and direction for students."
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+
+# === PRODUCTION DEPENDENCIES ===
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # For state management (like the ThemeProvider)
+  provider: ^6.1.2
+
+  # For simple key-value local storage (onboarding flag)
+  shared_preferences: ^2.2.3
+
+  # For fast, structured local database storage (user profile)
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+
+  # For the card swipe UI in the Interest Assessment
+  flutter_card_swiper: ^7.0.0
+
+  # For the star rating UI in the Interest Assessment
+  flutter_rating_bar: ^4.0.1
+  
+  # Icons that are commonly used
+  cupertino_icons: ^1.0.8
+
+# === DEVELOPMENT DEPENDENCIES ===
+# These are only used during the development process
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # A popular linter for enforcing good Dart coding practices
+  flutter_lints: ^3.0.0
+  
+  # For generating files for Hive database models
+  hive_generator: ^2.0.1
+  build_runner: ^2.4.9
+
+# === FLUTTER SPECIFIC CONFIGURATIONS ===
+flutter:
+  uses-material-design: true
+
+  # Asset declarations for images and mock data
+  assets:
+    - assets/images/
+    - assets/data/

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Indian Institute of Science",
+    "location": "Bengaluru, Karnataka",
+    "image": "assets/images/college_placeholder.png",
+    "rating": 4.9
+  },
+  {
+    "name": "Indian Institute of Technology Bombay",
+    "location": "Mumbai, Maharashtra",
+    "image": "assets/images/college_placeholder.png",
+    "rating": 4.8
+  },
+  {
+    "name": "University of Delhi",
+    "location": "New Delhi, Delhi",
+    "image": "assets/images/college_placeholder.png",
+    "rating": 4.5
+  },
+  {
+    "name": "Christ University",
+    "location": "Bengaluru, Karnataka",
+    "image": "assets/images/college_placeholder.png",
+    "rating": 4.6
+  }
+]

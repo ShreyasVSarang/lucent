@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Software Engineer",
+    "field": "Technology",
+    "description": "Designs, develops, and maintains software applications."
+  },
+  {
+    "title": "Graphic Designer",
+    "field": "Creative Arts",
+    "description": "Creates visual concepts to communicate ideas that inspire and inform."
+  },
+  {
+    "title": "Data Scientist",
+    "field": "Technology",
+    "description": "Analyzes and interprets complex data to help organizations make better decisions."
+  },
+  {
+    "title": "Civil Engineer",
+    "field": "Engineering",
+    "description": "Designs, builds, and maintains infrastructure projects and systems."
+  },
+  {
+    "title": "Content Writer",
+    "field": "Media",
+    "description": "Writes engaging and informative content for websites, blogs, and marketing."
+  }
+]
