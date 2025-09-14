@@ -1,10 +1,27 @@
-// Paste this simplified code into: lib/main.dart
-
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:lucent/models/user_profile.dart';
+import 'package:lucent/providers/profile_creation_provider.dart';
+import 'package:lucent/providers/theme_provider.dart';
 import 'package:lucent/screens/splash_screen.dart';
+import 'package:provider/provider.dart'; // This line is now corrected
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  if (!Hive.isAdapterRegistered(UserProfileAdapter().typeId)) {
+    Hive.registerAdapter(UserProfileAdapter());
+  }
+
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider(create: (_) => ProfileCreationProvider()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -12,28 +29,30 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Define your themes directly here
+    // Define your themes directly inside the build method
     final ThemeData lightTheme = ThemeData(
       brightness: Brightness.light,
       primarySwatch: Colors.blue,
-      // ... other light theme properties
+      // ... other properties
     );
 
     final ThemeData darkTheme = ThemeData(
       brightness: Brightness.dark,
       primarySwatch: Colors.blue,
-      scaffoldBackgroundColor: const Color(0xFF121212),
-      // ... other dark theme properties
+      // ... other properties
     );
 
-    return MaterialApp(
-      title: 'Lucent',
-      debugShowCheckedModeBanner: false,
-      theme: lightTheme,
-      darkTheme: darkTheme,
-      // This line tells the app to follow the phone's setting
-      themeMode: ThemeMode.system,
-      home: const SplashScreen(),
+    return Consumer<ThemeProvider>(
+      builder: (context, themeProvider, child) {
+        return MaterialApp(
+          title: 'Lucent',
+          debugShowCheckedModeBanner: false,
+          theme: lightTheme,
+          darkTheme: darkTheme,
+          themeMode: themeProvider.themeMode,
+          home: const SplashScreen(),
+        );
+      },
     );
   }
 }

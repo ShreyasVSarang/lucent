@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lucent/screens/profile_creation/personal_info_screen.dart'; // Import new screen
+import 'package:lucent/screens/profile_creation/personal_info_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -7,7 +7,6 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
@@ -22,16 +21,20 @@ class WelcomeScreen extends StatelessWidget {
                 color: Colors.blueAccent,
               ),
               const SizedBox(height: 32),
-              const Text(
+              Text(
                 'Welcome to Lucent',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
               const SizedBox(height: 16),
-              const Text(
+              Text(
                 'Find clarity and direction for your future career path.',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 16, color: Colors.black54),
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: Colors.grey[600],
+                    ),
               ),
               const Spacer(),
               ElevatedButton(
@@ -42,7 +45,6 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  // **THIS IS THE UPDATE**
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => const PersonalInfoScreen(),

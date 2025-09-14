@@ -1,17 +1,45 @@
-import 'package:flutter/material.dart';
-import 'package:lucent/screens/resource_library_screen.dart'; // Import the new screen
+// Paste this corrected code into: lib/screens/dashboard_screen.dart
 
-class DashboardScreen extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:lucent/models/user_profile.dart'; // Corrected import path
+import 'package:lucent/screens/resource_library_screen.dart';
+
+class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
+
+  @override
+  State<DashboardScreen> createState() => _DashboardScreenState();
+}
+
+class _DashboardScreenState extends State<DashboardScreen> {
+  String _userName = 'User';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserName();
+  }
+
+  Future<void> _loadUserName() async {
+    final box = await Hive.openBox<UserProfile>('userProfileBox');
+    final userProfile = box.get('mainProfile');
+    if (userProfile != null && mounted) {
+      setState(() {
+        _userName = userProfile.name;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Hi, Alex!"),
+        title: Text("Hi, $_userName!"),
         actions: [
           IconButton(
             icon: const CircleAvatar(
+              // Corrected syntax
               backgroundColor: Colors.black26,
               child: Icon(Icons.person, color: Colors.white),
             ),
@@ -19,12 +47,12 @@ class DashboardScreen extends StatelessWidget {
           ),
         ],
       ),
+      // ... rest of the body is the same ...
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [
-          // --- THIS IS THE NEW CARD ---
           Card(
-            color: Colors.blue[50],
+            color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
             elevation: 4,
             child: ListTile(
               leading:
@@ -43,8 +71,6 @@ class DashboardScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
-
-          // --- Existing Cards ---
           const Text("Top 3 Career Suggestions",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           const SizedBox(height: 10),
